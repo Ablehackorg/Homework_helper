@@ -1,0 +1,97 @@
+{
+    "name": "Homework",
+    "type": "object",
+    "properties": {
+      "question": {
+        "type": "string",
+        "description": "Текст задания"
+      },
+      "language": {
+        "type": "string",
+        "enum": [
+          "uzbek",
+          "russian",
+          "english"
+        ],
+        "default": "russian",
+        "description": "Язык объяснения"
+      },
+      "subject": {
+        "type": "string",
+        "enum": [
+          "math",
+          "physics",
+          "chemistry",
+          "biology",
+          "history",
+          "literature",
+          "english",
+          "other"
+        ],
+        "description": "Предмет"
+      },
+      "ai_model": {
+        "type": "string",
+        "enum": [
+          "gpt4",
+          "llama3",
+          "mistral",
+          "gemma",
+          "claude"
+        ],
+        "default": "gpt4",
+        "description": "Выбранная AI модель"
+      },
+      "explanation": {
+        "type": "object",
+        "description": "Пошаговое объяснение",
+        "properties": {
+          "steps": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "diagram_description": {
+            "type": "string"
+          },
+          "voice_text": {
+            "type": "string"
+          },
+          "video_script": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "scene": {
+                  "type": "number"
+                },
+                "description": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "diagram_url": {
+        "type": "string",
+        "description": "URL сгенерированной диаграммы"
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "processing",
+          "completed",
+          "error"
+        ],
+        "default": "processing"
+      }
+    },
+    "required": [
+      "question",
+      "language",
+      "subject",
+      "ai_model"
+    ]
+  }
